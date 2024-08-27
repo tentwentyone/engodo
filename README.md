@@ -122,6 +122,16 @@ The following variables are common across all modules to facilitate cross-cloud 
 - `alert_email`: Email address for sending alerts. if not specified, no alerts will be sent.
 For a complete list of variables, refer to the documentation of each module.
 
+## Helpfull links 📚
+
+- [AWS Blog - How to detect suspicious activity in your AWS account by using private decoy resources](https://aws.amazon.com/pt/blogs/security/how-to-detect-suspicious-activity-in-your-aws-account-by-using-private-decoy-resources/)
+- [Zscaler Cloud Deception - usefull information about cloud deception within cloud environments](https://help.zscaler.com/deception/deceive/cloud-deception)
+- [Qeeqbox: Honeypots - honeypots for multiple protocols in a python package](https://github.com/qeeqbox/honeypots)
+- [Telekom Security: T-potce - all in one honeypot based on docker](https://github.com/telekom-security/tpotce)
+- [SpaceSiren - honeypot for AWS access keys](https://github.com/spacesiren/spacesiren)
+- [IMDSpoof - spoof and serve fake IMDS metadata](https://github.com/grahamhelton/IMDSpoof)
+- [AWS-Mine - Identical to spacesiren but with more features](https://github.com/StevenSmiley/aws-mine)
+
 ## Contributing 🤝
 
 We welcome contributions! Please read our CONTRIBUTING.md file (TBD) for details on the code of conduct, and the process for submitting pull requests.
