@@ -131,6 +131,7 @@ For a complete list of variables, refer to the documentation of each module.
 - [SpaceSiren - honeypot for AWS access keys](https://github.com/spacesiren/spacesiren)
 - [IMDSpoof - spoof and serve fake IMDS metadata](https://github.com/grahamhelton/IMDSpoof)
 - [AWS-Mine - Identical to spacesiren but with more features](https://github.com/StevenSmiley/aws-mine)
+- [Heidelberg University - Honeypot Implementation in a Cloud Environment](https://arxiv.org/pdf/2301.00710)
 
 ## Contributing 🤝
 
