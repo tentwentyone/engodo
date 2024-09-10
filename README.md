@@ -63,7 +63,7 @@ The architecture of Engodo is designed to be modular and cloud-agnostic, allowin
 
 The architecture consists of the following components:
 
-- **Terraform Configuration**: Contains the Terraform configuration files for deploying honeypots in GCP, AWS, and Azure.
+- **Terraform Configuration**: Contains the Terraform configuration files divided into modules for deploying honeypots in GCP, AWS, and Azure.
 - **Decoy Resources**: Honeypots deployed in the cloud environment to attract potential attackers.
 - **Logging Services**: Cloud-native logging services to monitor interactions with the decoy resources.
 - **Event Services**: Cloud-native event services to trigger events based on interactions with the decoy resources.
@@ -121,6 +121,23 @@ The following variables are common across all modules to facilitate cross-cloud 
 - `topic_name`: Name of the Pub/Sub topic or SNS topic for sending alerts. if not specified, no alerts will be sent.
 - `alert_email`: Email address for sending alerts. if not specified, no alerts will be sent.
 For a complete list of variables, refer to the documentation of each module.
+
+## Use cases 📦
+
+| Use Case | Description | Events | GCP | AWS | Azure |
+| --- | --- | --- | --- | --- | --- |
+| 1. Unauthorized Bucket Access | Detect when someone attempts to access a bucket they shouldn't have access to | storage.objects.list <br> storage.objects.get <br> storage.getIamPermissions <br> google.cloud.resourcemanager.v3.TagBindings.ListEffectiveTags |  ✅ | 🚧 | 🚧 |
+|2 . Malicious Assume Role | Identify and detect who's trying to assume a decoy role | XXXXXXXXXXX <br> XXXXXXXXXXX <br> XXXXXXXXXXX <br> XXXXXXXXXXX | ✅ | 🚧 | 🚧 |
+| 3. Unauthorized Secret Store Access | Flag attempts to access decoy secrets that should never be accessed | XXXXXXXXXX <br> XXXXXXXXXX <br> XXXXXXXXXX | ✅ | 🚧 | 🚧 |
+
+
+## How much time does it take to alert on an event? ⏰
+
+The time it takes to alert on an event depends on the cloud provider and the services used. Here's a rough estimate of the time it takes since the event to receiving the log on pub/sub:
+
+- **GCP**: 1-2 seconds
+- **AWS**: X seconds
+- **Azure**: X seconds
 
 ## Helpfull links 📚
 
