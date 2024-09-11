@@ -61,5 +61,5 @@ resource "google_project_iam_member" "this" {
 
 
 locals {
-  log_sink_filter = join("\n OR \n", [local.uc_1_log_sink_filter])
+  log_sink_filter = join(" OR ", [local.uc_1_log_sink_filter, local.uc_2_log_sink_filter])
 }

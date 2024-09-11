@@ -127,7 +127,7 @@ For a complete list of variables, refer to the documentation of each module.
 | Use Case | Description | Events | GCP | AWS | Azure |
 | --- | --- | --- | --- | --- | --- |
 | 1. Unauthorized Bucket Access | Detect when someone attempts to access a bucket they shouldn't have access to | storage.objects.list <br> storage.objects.get <br> storage.getIamPermissions <br> google.cloud.resourcemanager.v3.TagBindings.ListEffectiveTags |  ✅ | 🚧 | 🚧 |
-|2 . Malicious Assume Role | Identify and detect who's trying to assume a decoy role | XXXXXXXXXXX <br> XXXXXXXXXXX <br> XXXXXXXXXXX <br> XXXXXXXXXXX | ✅ | 🚧 | 🚧 |
+|2 . Malicious Assume SA | Identify who's trying to assume a decoy service account | iam.serviceAccounts.getAccessToken <br> google.iam.admin.v1.GetRole | ✅ | 🚧 | 🚧 |
 | 3. Unauthorized Secret Store Access | Flag attempts to access decoy secrets that should never be accessed | XXXXXXXXXX <br> XXXXXXXXXX <br> XXXXXXXXXX | ✅ | 🚧 | 🚧 |
 
 
