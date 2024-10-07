@@ -47,16 +47,11 @@ resource "google_logging_project_sink" "this" {
 
 # add the necessary permissions to the default logging service account to be able to export logs to pub sub
 
-resource "google_project_iam_member" "this" {
+resource "google_pubsub_topic_iam_member" "this" {
   project = data.google_project.this.project_id
+  topic   = google_pubsub_topic.this.name
   role    = "roles/pubsub.publisher"
   member  = format("serviceAccount:service-%s@gcp-sa-logging.iam.gserviceaccount.com", data.google_project.this.number)
-  # restrict the permissions to the engodo pub sub topic
-  condition {
-    title       = "access to engodo pub sub topic"
-    description = "Allow the default logging service account to publish messages to the engodo pub sub topic"
-    expression  = "resource.name == '${google_pubsub_topic.this.name}'"
-  }
 }
 
 
