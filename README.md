@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD033 -->
+
 # Engodo 🎣
 
 > [!WARNING]
@@ -9,22 +11,19 @@ Welcome to **Engodo**! This repository helps you deploy decoy resources (honeypo
 
 ## Table of Contents 📖
 
-- [Introduction](#introduction)
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [Repository Structure](#repository-structure)
-- [Prerequisites](#prerequisites)
-<!-- - [Usage](#usage) -->
-  <!-- - [Setup Decoy](#setup-decoy)
-  - [Watch Decoy Logs](#watch-decoy-logs)
-  - [Create Event on Interaction](#create-event-on-interaction) -->
-- [Modules](#modules)
-  - [AWS](#aws)
-  - [GCP](#gcp)
-  - [Azure](#azure)
-- [Common Variables](#common-variables)
-- [Contributing](#contributing)
-- [License](#license)
+- [Introduction](#introduction-)
+- [Features](#features-)
+- [Getting Started](#getting-started-️)
+- [Repository Structure](#-repository-structure)
+- [Prerequisites](#prerequisites-)
+<!-- - [Usage](#-usage) -->
+  <!-- - [Setup Decoy](#-setup-decoy)
+  - [Watch Decoy Logs](#-watch-decoy-logs)
+  - [Create Event on Interaction](#-create-event-on-interaction) -->
+
+- [Common Variables](#common-configuration-variables-️)
+- [Contributing](#contributing-)
+- [License](#license-)
 
 ## Introduction 🚀
 
@@ -134,7 +133,6 @@ For a complete list of variables, refer to the documentation of each module. -->
 | 1. Unauthorized Bucket Access | Detect when someone attempts to access a bucket object they shouldn't access | storage.objects.get <br> storage.objects.update <br> storage.objects.create <br>  storage.objects.delete |  ✅ | 🚧 | 🚧 |
 |2 . Malicious Assume SA | Identify who's trying to assume a decoy service account and what actions they try to perform with the SA | iam.serviceAccounts.getAccessToken <br> google.iam.admin.v1.GetRole | ✅ | 🚧 | 🚧 |
 | 3. Unauthorized Secret Store Access | Flag attempts to access decoy secrets that should never be accessed | secretmanager.v1.SecretManagerService.EnableSecretVersion <br> secretmanager.v1.SecretManagerService.AddSecretVersion <br> secretmanager.v1.SecretManagerService.DisableSecretVersion <br> google.iam.admin.v1.GetPolicyDetails <br> location.Locations.GetLocation <br> location.Locations.ListLocations <br> secretmanager.v1.SecretManagerService.GetIamPolicy <br> secretmanager.v1.SecretManagerService.GetSecret <br> secretmanager.v1.SecretManagerService.GetSecretVersion <br> secretmanager.v1.SecretManagerService.ListSecretVersions <br> secretmanager.v1.SecretManagerService.ListSecrets <br> secretmanager.v1.SecretManagerService.CreateSecret <br> secretmanager.v1.SecretManagerService.DeleteSecret <br> secretmanager.v1.SecretManagerService.DestroySecretVersion <br> secretmanager.v1.SecretManagerService.SetIamPolicy <br> secretmanager.v1.SecretManagerService.UpdateSecret <br> secretmanager.v1.SecretManagerService.AccessSecretVersion | ✅ | 🚧 | 🚧 |
-
 
 ## How much time does it take to alert on an event? ⏰
 

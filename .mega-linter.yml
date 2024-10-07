@@ -1,0 +1,29 @@
+# Configuration file for Mega-Linter
+# See all available variables at https://nvuillam.github.io/mega-linter/configuration/ and in linters documentation
+
+APPLY_FIXES:
+  - TERRAFORM_TERRAFORM_FMT
+  - MARKDOWN_MARKDOWNLINT
+# ENABLE: # If you use ENABLE variable, all other languages/formats/tooling-formats will be disabled by default
+# ENABLE_LINTERS: # If you use ENABLE_LINTERS variable, all other linters will be disabled by default
+ENABLE_LINTERS:
+  - REPOSITORY_CHECKOV
+  - TERRAFORM_TFLINT
+  - TERRAFORM_TERRAFORM_FMT
+  #- TERRAFORM_KICS # TODO: #25 disabled until we tackle minimum required configuration (currently kics takes too long and it is being pesky)
+  - MARKDOWN_MARKDOWNLINT
+  - EDITORCONFIG_EDITORCONFIG_CHECKER
+  - CREDENTIALS_SECRETLINT
+  - GIT_GIT_DIFF
+SHOW_ELAPSED_TIME: false
+FILEIO_REPORTER: false
+IGNORE_GITIGNORED_FILES: true # If set to true, Mega-Linter will skip files ignored by git using .gitignore file
+KUBERNETES_DIRECTORY: k8s
+KUBERNETES_KUBEVAL_ARGUMENTS: "--schema-location https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/ --ignore-missing-schemas"
+MARKDOWN_MARKDOWNLINT_CONFIG_FILE: LINTER_DEFAULT
+REPOSITORY_CHECKOV_CONFIG_FILE: LINTER_DEFAULT
+TERRAFORM_TFLINT_UNSECURED_ENV_VARIABLES:
+- GITHUB_TOKEN
+VALIDATE_ALL_CODEBASE: true
+TERRAFORM_TFLINT_RULES_PATH: .tflint.hcl
+TERRAFORM_TFLINT_DISABLE_ERRORS: false

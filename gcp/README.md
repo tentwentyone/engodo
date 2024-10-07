@@ -1,3 +1,10 @@
+<!-- markdownlint-disable MD033 MD034 -->
+
+# Engodo GCP Module
+
+## Architecture
+
+![GCP Architecture](../attachments/architecture/gcp_arch.svg)
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 

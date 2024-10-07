@@ -1,3 +1,11 @@
+<!-- markdownlint-disable MD033 MD034 -->
+
+# Example usage for GCP module
+
+This example is extensive and has all variables filled in, it's intended to be used as a reference.
+
+Do not use in production.
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 

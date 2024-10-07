@@ -3,6 +3,8 @@
 
 
 module "engodo" {
+  #checkov:skip=CKV_TF_1
+  #checkov:skip=CKV_TF_2
   source = "git::https://github.com/nosportugal/engodo.git?ref=vX.X.X" #choose your version here
 
   ### general configuration ###

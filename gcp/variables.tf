@@ -2,6 +2,7 @@
 variable "region" {
   description = "The region in which the resources will be created."
   default     = "europe-west1"
+  type        = string
 }
 
 
@@ -54,18 +55,22 @@ variable "uc3_config" {
 variable "allowed_domains" {
   description = "List of domains that should be allowed to access the resources."
   default     = []
+  type        = list(string)
 }
 
 variable "prefix" {
   description = "The prefix to be used for all resources not belonging to a specific usecase."
   default     = "engodo"
+  type        = string
 }
 
 variable "organization_domain_id" {
   description = "The id domain of the organization."
+  type        = string
 }
 
 variable "whitelist_service_accounts" {
   description = "List of service accounts that should be whitelisted."
   default     = []
+  type        = list(string)
 }
