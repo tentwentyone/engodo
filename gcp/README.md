@@ -53,22 +53,20 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_allowed_domains"></a> [allowed\_domains](#input\_allowed\_domains) | List of domains that should be allowed to access the resources. | `list` | `[]` | no |
-| <a name="input_organization_domain_id"></a> [organization\_domain\_id](#input\_organization\_domain\_id) | The id domain of the organization. | `any` | n/a | yes |
+| <a name="input_allowed_domains"></a> [allowed\_domains](#input\_allowed\_domains) | List of domains that should be allowed to access the resources. | `list(string)` | `[]` | no |
+| <a name="input_organization_domain_id"></a> [organization\_domain\_id](#input\_organization\_domain\_id) | The id domain of the organization. | `string` | n/a | yes |
 | <a name="input_prefix"></a> [prefix](#input\_prefix) | The prefix to be used for all resources not belonging to a specific usecase. | `string` | `"engodo"` | no |
 | <a name="input_region"></a> [region](#input\_region) | The region in which the resources will be created. | `string` | `"europe-west1"` | no |
 | <a name="input_uc1_config"></a> [uc1\_config](#input\_uc1\_config) | Configuration for Use Case 1 - Unauthorized Bucket Access | <pre>object({<br/>    enable               = optional(bool, true)<br/>    bucket_name          = optional(string, "") # if empty, a random name will be generated<br/>    enable_audit_logging = optional(bool, true) # enable `ADMIN_READ`, `DATA_READ`, `DATA_WRITE` logs for cloud storage<br/>    allowed_domains      = optional(list(string), null)<br/>  })</pre> | `{}` | no |
 | <a name="input_uc2_config"></a> [uc2\_config](#input\_uc2\_config) | Configuration for Use Case 2 - Malicious Assume Service Account | <pre>object({<br/>    enable               = optional(bool, true)<br/>    role_title           = optional(string, "Organization Admin")<br/>    role_description     = optional(string, "Full access to all organization resources, including administrative tasks, financial data, and sensitive services. Be cautious with its usage.")<br/>    role_permissions     = optional(list(string), ["storage.buckets.list"])<br/>    sa_name              = optional(string, "devops mgmt pipeline")<br/>    enable_audit_logging = optional(bool, true) # enable `ADMIN_READ`, `DATA_READ`, `DATA_WRITE` logs for iam<br/>    allowed_domains      = optional(list(string), [])<br/>  })</pre> | `{}` | no |
 | <a name="input_uc3_config"></a> [uc3\_config](#input\_uc3\_config) | Configuration for Use Case 3 - Unauthorized Secret Store Access | <pre>object({<br/>    enable               = optional(bool, true)<br/>    secret_id            = optional(string, "Github Organization Token")<br/>    secret_content       = optional(string, "") # if empty, a random content will be generated<br/>    enable_audit_logging = optional(bool, true) # enable `ADMIN_READ`, `DATA_READ`, `DATA_WRITE` logs for secret manager<br/>  })</pre> | `{}` | no |
-| <a name="input_whitelist_service_accounts"></a> [whitelist\_service\_accounts](#input\_whitelist\_service\_accounts) | List of service accounts that should be whitelisted. | `list` | `[]` | no |
+| <a name="input_whitelist_service_accounts"></a> [whitelist\_service\_accounts](#input\_whitelist\_service\_accounts) | List of service accounts that should be whitelisted. | `list(string)` | `[]` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_log_sink_filter"></a> [log\_sink\_filter](#output\_log\_sink\_filter) | n/a |
-| <a name="output_log_sink_size"></a> [log\_sink\_size](#output\_log\_sink\_size) | https://cloud.google.com/logging/quotas#:~:text=Length%20of%20a%20sink%20inclusion%20filter |
-| <a name="output_organization"></a> [organization](#output\_organization) | n/a |
-| <a name="output_project_info"></a> [project\_info](#output\_project\_info) | n/a |
+| <a name="output_log_sink_filter"></a> [log\_sink\_filter](#output\_log\_sink\_filter) | The log sink filter containing all use cases and whitelist |
+| <a name="output_log_sink_size"></a> [log\_sink\_size](#output\_log\_sink\_size) | Current log sink size in characters |
 | <a name="output_usecases"></a> [usecases](#output\_usecases) | n/a |
 <!-- END_TF_DOCS -->

@@ -9,7 +9,6 @@ module "engodo" {
 
   ### general configuration ###
 
-  organization_domain_id     = "organizations/org_id_here"                    #GCP organization ID | run this command to obtain it `gcloud projects get-ancestors <project_id> | grep organization | awk '{print $1}'
   whitelist_service_accounts = ["someserviceaccount@iam.gserviceaccount.com"] # list of service accounts that should be whitelisted
   allowed_domains            = ["internaldomain.com"]                         #this is the global  value that is shared across all use cases, if you also specify a value in the use case config, it will override this value for that use case
 

@@ -1,7 +1,7 @@
 #! https://github.com/terraform-linters/tflint/tree/master/docs/user-guide
 
 config {
-  module              = false
+  call_module_type    = "none"
   force               = false
   disabled_by_default = true
 }

@@ -64,10 +64,6 @@ variable "prefix" {
   type        = string
 }
 
-variable "organization_domain_id" {
-  description = "The id domain of the organization."
-  type        = string
-}
 
 variable "whitelist_service_accounts" {
   description = "List of service accounts that should be whitelisted."

@@ -21,10 +21,9 @@ resource "random_id" "uc1_bucket" {
   byte_length = 2
 }
 
-#checkov:skip=CKV_GCP_62  "Bucket should log access"
-# bucket access logs are enabled at project level
 
 resource "google_storage_bucket" "uc1_bucket" {
+  #checkov:skip=CKV_GCP_62:Bucket access logs are enabled at project level
   count                       = var.uc1_config.enable ? 1 : 0
   name                        = var.uc1_config.bucket_name != "" ? var.uc1_config.bucket_name : format("%s-%s", random_pet.uc1_bucket[0].id, lower(random_id.uc1_bucket[0].id))
   location                    = var.region

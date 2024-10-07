@@ -6,14 +6,10 @@
 data "google_project" "this" {
 }
 
-data "google_organization" "this" {
-  organization = var.organization_domain_id
-}
-
-
 
 # create a pub sub topic to receive the logs
 resource "google_pubsub_topic" "this" {
+  #checkov:skip=CKV_GCP_83:Skipping CSEK to keep costs at a minimum
   name                       = format("%s-topic", var.prefix)
   message_retention_duration = "86600s"
 }

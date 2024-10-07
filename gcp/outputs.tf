@@ -14,6 +14,8 @@ output "usecases" {
     }, "")
   }
 
+  description = "Use cases related information"
+
 }
 
 output "log_sink_filter" {
