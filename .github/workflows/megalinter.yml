@@ -1,0 +1,14 @@
+name: MegaLinter
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  megalinter:
+    uses: nosportugal/github-workflows-ccoe/.github/workflows/megalinter-terraform-v2.yml@main
+    secrets: inherit
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
