@@ -46,7 +46,6 @@ No modules.
 | [random_id.uc3_secret](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) | resource |
 | [random_id.uc3_secret_version](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) | resource |
 | [random_pet.uc1_bucket](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/pet) | resource |
-| [google_organization.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/organization) | data source |
 | [google_project.this](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/project) | data source |
 
 ## Inputs
@@ -54,7 +53,6 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_allowed_domains"></a> [allowed\_domains](#input\_allowed\_domains) | List of domains that should be allowed to access the resources. | `list(string)` | `[]` | no |
-| <a name="input_organization_domain_id"></a> [organization\_domain\_id](#input\_organization\_domain\_id) | The id domain of the organization. | `string` | n/a | yes |
 | <a name="input_prefix"></a> [prefix](#input\_prefix) | The prefix to be used for all resources not belonging to a specific usecase. | `string` | `"engodo"` | no |
 | <a name="input_region"></a> [region](#input\_region) | The region in which the resources will be created. | `string` | `"europe-west1"` | no |
 | <a name="input_uc1_config"></a> [uc1\_config](#input\_uc1\_config) | Configuration for Use Case 1 - Unauthorized Bucket Access | <pre>object({<br/>    enable               = optional(bool, true)<br/>    bucket_name          = optional(string, "") # if empty, a random name will be generated<br/>    enable_audit_logging = optional(bool, true) # enable `ADMIN_READ`, `DATA_READ`, `DATA_WRITE` logs for cloud storage<br/>    allowed_domains      = optional(list(string), null)<br/>  })</pre> | `{}` | no |
@@ -68,5 +66,5 @@ No modules.
 |------|-------------|
 | <a name="output_log_sink_filter"></a> [log\_sink\_filter](#output\_log\_sink\_filter) | The log sink filter containing all use cases and whitelist |
 | <a name="output_log_sink_size"></a> [log\_sink\_size](#output\_log\_sink\_size) | Current log sink size in characters |
-| <a name="output_usecases"></a> [usecases](#output\_usecases) | n/a |
+| <a name="output_usecases"></a> [usecases](#output\_usecases) | Use cases related information |
 <!-- END_TF_DOCS -->
