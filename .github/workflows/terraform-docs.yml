@@ -1,0 +1,13 @@
+name: Terraform Docs
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  terraform-docs:
+    uses: nosportugal/github-workflows-ccoe/.github/workflows/terraform-docs.yml@main
+    secrets: inherit
+    with:
+      find-dir: .
+      output-method: inject
