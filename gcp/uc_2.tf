@@ -6,6 +6,18 @@
 
 # Create an SA that can be assumed by anyone in the organization , without any permissions.
 
+# this service account can have WIF in order to allow any gke cluster workload to assume it
+
+#to do this, you need to specify the namespace and the k8s service account name in the wif configuration of the use case
+
+# the module does not interact with the k8s cluster! it only creates the necessary IAM bindings in GCP. this means that you need to specify a namespace and a service account that already exists in the k8s cluster, and annotate it with the following command:
+
+
+#k annotate serviceaccount <k8s-sa-name> iam.gke.io/gcp-service-account=<sa-email>
+
+
+
+
 
 
 # create a random lowercase id for the role
@@ -39,18 +51,22 @@ resource "google_project_iam_member" "uc2_role" {
   member  = format("serviceAccount:%s", google_service_account.uc2_sa[0].email)
 }
 
+
+
+
+
+
 locals {
 
 
 
   uc2_log_sink_filter = try(<<EOF
-  (protoPayload.authenticationInfo.principalEmail="${google_service_account.uc2_sa[0].email}" OR (protoPayload.authorizationInfo.permission="iam.serviceAccounts.getAccessToken" AND protoPayload.request.name="projects/-/serviceAccounts/${google_service_account.uc2_sa[0].email}") OR (protoPayload.resourceName="projects/ccoe-lab-000002/roles/${google_service_account.uc2_sa[0].display_name}" AND protoPayload.methodName="google.iam.admin.v1.GetRole"))
+  (protoPayload.authenticationInfo.principalEmail="${google_service_account.uc2_sa[0].email}" OR (protoPayload.authorizationInfo.permission="iam.serviceAccounts.getAccessToken" AND protoPayload.request.name="projects/-/serviceAccounts/${google_service_account.uc2_sa[0].email}") OR (protoPayload.resourceName="projects/${data.google_project.this.project_id}/roles/${google_service_account.uc2_sa[0].display_name}" AND protoPayload.methodName="google.iam.admin.v1.GetRole") OR (protoPayload.methodName="GenerateIdToken" AND protoPayload.metadata.identityDelegationChain="projects/-/serviceAccounts/${google_service_account.uc2_sa[0].email}"))
 EOF
   , "")
 
   uc2_allowed_domains = var.uc2_config.enable ? coalesce(var.uc2_config.allowed_domains, var.allowed_domains) : []
 }
-
 
 # add the necessary permissions  so anyone in the organization can assume the SA
 resource "google_service_account_iam_member" "uc2_allowed_domain" {
@@ -79,3 +95,18 @@ resource "google_project_iam_audit_config" "logging" {
   }
 }
 
+
+
+
+# wif configuration
+
+# gcloud iam service-accounts add-iam-policy-binding sa-gcp-test@$PROJECT_ID.iam.gserviceaccount.com --role roles/iam.workloadIdentityUser --member "serviceAccount:$PROJECT_ID.svc.id.goog[default/sa-k8-test]"
+
+
+resource "google_service_account_iam_member" "name" {
+  for_each = var.uc2_config.enable && var.uc2_config.wif.enable ? var.uc2_config.wif.clusters : {}
+
+  service_account_id = google_service_account.uc2_sa[0].name
+  member             = format("serviceAccount:%s.svc.id.goog[%s/%s]", data.google_project.this.project_id, each.value.namespace, each.value.service_account)
+  role               = "roles/iam.workloadIdentityUser"
+}

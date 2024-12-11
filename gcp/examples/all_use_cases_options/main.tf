@@ -27,13 +27,24 @@ module "engodo" {
   }
 
   uc2_config = {
-    enable               = true                 #enable or disable the use case
-    role_title           = "Organization Admin" #name of the role
-    role_description     = "Full access to all organization resources, including administrative tasks, financial data, and sensitive services. Be cautious with its usage."
-    role_permissions     = ["storage.buckets.list"] #permissions assigned to the role
-    sa_name              = "serviceacc custom name" #name of the service account
-    enable_audit_logging = true                     #disabling this can cause some actions to not be logged
-    allowed_domains      = ["internaldomain.com", "externaldomain.com"]
+    enable                     = true                 #enable or disable the use case
+    role_title                 = "Organization Admin" #name of the role
+    role_description           = "Full access to all organization resources, including administrative tasks, financial data, and sensitive services. Be cautious with its usage."
+    role_permissions           = ["storage.buckets.list"]  #permissions assigned to the role
+    sa_name                    = "service acc custom name" #name of the service account
+    enable_audit_logging       = true                      #disabling this can cause some actions to not be logged
+    allowed_domains            = ["internaldomain.com", "externaldomain.com"]
+    whitelist_service_accounts = ["example-service-account@test.iam.gserviceaccount.com"]
+    wif = {
+      enable = true
+      clusters = {
+        cluster_name = {
+          namespace       = "default"
+          service_account = "example_k8s_sa"
+        }
+      }
+    }
+
   }
 
   uc3_config = {
