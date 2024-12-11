@@ -34,6 +34,16 @@ variable "uc2_config" {
     sa_name              = optional(string, "devops mgmt pipeline")
     enable_audit_logging = optional(bool, true) # enable `ADMIN_READ`, `DATA_READ`, `DATA_WRITE` logs for iam
     allowed_domains      = optional(list(string), [])
+
+
+    wif = optional(object({
+      enable = optional(bool, true)
+      clusters = optional(map(object({
+        namespace       = string
+        service_account = string
+      })))
+      })
+    )
   })
 }
 
